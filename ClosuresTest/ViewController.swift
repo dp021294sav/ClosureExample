@@ -15,12 +15,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         changeColorAction = {
-            (color: UIColor) in
-            return self.view.backgroundColor = color
+             [weak self] (color: UIColor) in
+            self?.view.backgroundColor = color
         }
     }
 
     @IBAction func buttonPressed(_ sender: UIButton) {
-        changeColorAction!(sender.backgroundColor!)
+        changeColorAction?(sender.backgroundColor ?? .white)
     }
 }
